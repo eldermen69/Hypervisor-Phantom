@@ -1046,8 +1046,8 @@ index 1ac063c..9a3bbd9 100644
   * default value to 2000MHz as we did before.
   */
 -#define DEFAULT_CPU_SPEED 2000
-#define DEFAULT_CPU_SPEED 3800
-#define DEFAULT_BOOST_CPU_SPEED 4600
++#define DEFAULT_CPU_SPEED 3800
++#define DEFAULT_BOOST_CPU_SPEED 4600
  
  static struct {
      uint16_t processor_family;
