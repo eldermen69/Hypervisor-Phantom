@@ -20,7 +20,7 @@ index 814796d..a584383 100644
          memcpy(s->volume_label, label, label_length);
      } else {
 -        memcpy(s->volume_label, "QEMU VVFAT", 10);
-+        memcpy(s->volume_label, "ASUS VVFAT", 10);
++        memcpy(s->volume_label, "Local Disk", 10);
      }
  
      if (floppy) {
@@ -131,15 +131,15 @@ index ef6be36..0932690 100644
      size_t smbios_tables_len, smbios_anchor_len;
      struct smbios_phys_mem_area mem_array;
 -    const char *product = "QEMU Virtual Machine";
-+    const char *product = "AMD Machine";
++    const char *product = "B550 AORUS ELITE V2";
  
      if (kvm_enabled()) {
 -        product = "KVM Virtual Machine";
-+        product = "AMD Machine";
++        product = "B550 AORUS ELITE V2";
      }
  
 -    smbios_set_defaults("QEMU", product, mc->name);
-+    smbios_set_defaults("Unknown", product, mc->name);
++    smbios_set_defaults("Gigabyte Technology Co., Ltd.", product, mc->name);
  
      /* build the array of physical mem area from base_memmap */
      mem_array.address = vms->memmap[VIRT_MEM].base;
@@ -472,7 +472,7 @@ index 5c0bcd5..ac47187 100644
      if (pcmc->smbios_defaults) {
          /* These values are guest ABI, do not change */
 -        smbios_set_defaults("QEMU", mc->desc, mc->name);
-+        smbios_set_defaults("Unknown", mc->desc, mc->name);
++        smbios_set_defaults("Gigabyte Technology Co., Ltd.", mc->desc, mc->name);
      }
  
      /* tell smbios about cpuid version and features */
@@ -539,14 +539,14 @@ index c033242..4ac1fe3 100644
  
 -    m->family = "pc_piix";
 -    m->desc = "Standard PC (i440FX + PIIX, 1996)";
-+    m->family = "pc_x570";
-+    m->desc = "AMD Ryzen 7 7700X 8-Core Processor";
++    m->family = "pc_b550";
++    m->desc = "AMD Ryzen 7 5700G with Radeon Graphics";
      m->default_machine_opts = "firmware=bios-256k.bin";
 -    m->default_display = "std";
 -    m->default_nic = "e1000";
 -    m->no_floppy = !module_object_class_by_name(TYPE_ISA_FDC);
 +    m->default_display = "none";
-+    m->default_nic = "rtl8139"; // Realtek PCI Express Gigabit Ethernet Controller
++    m->default_nic = "igb"; // Realtek PCI Express Gigabit Ethernet Controller
 +    m->no_floppy = 1;
      m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
@@ -570,14 +570,14 @@ index b309b2b..572ded4 100644
  
 -    m->family = "pc_q35";
 -    m->desc = "Standard PC (Q35 + ICH9, 2009)";
-+    m->family = "pc_x570";
-+    m->desc = "AMD Ryzen 7 7700X 8-Core Processor";
++    m->family = "pc_b550";
++    m->desc = "AMD Ryzen 7 5700G with Radeon Graphics";
      m->units_per_default_bus = 1;
      m->default_machine_opts = "firmware=bios-256k.bin";
 -    m->default_display = "std";
 -    m->default_nic = "e1000e";
 +    m->default_display = "none";
-+    m->default_nic = "rtl8139"; // Realtek PCI Express Gigabit Ethernet Controller
++    m->default_nic = "igb"; // Realtek PCI Express Gigabit Ethernet Controller
      m->default_kernel_irqchip_split = false;
      m->no_floppy = 1;
      m->max_cpus = 4096;
@@ -1046,8 +1046,8 @@ index 1ac063c..9a3bbd9 100644
   * default value to 2000MHz as we did before.
   */
 -#define DEFAULT_CPU_SPEED 2000
-+#define DEFAULT_CPU_SPEED 3600
-+#define DEFAULT_BOOST_CPU_SPEED 4400
+#define DEFAULT_CPU_SPEED 3800
+#define DEFAULT_BOOST_CPU_SPEED 4600
  
  static struct {
      uint16_t processor_family;
@@ -1194,7 +1194,7 @@ index 1ac063c..9a3bbd9 100644
 -    t->processor_type = 0x03; /* CPU */
 -    t->processor_family = 0xfe; /* use Processor Family 2 field */
 +    t->processor_type = 0x03; /* Central Processor */
-+    t->processor_family = 0xCB; /* AMD Ryzen 5 processor */
++    t->processor_family = 0xCC; /* AMD Ryzen 5 processor */
      SMBIOS_TABLE_SET_STR(4, processor_manufacturer_str, type4.manufacturer);
      if (type4.processor_id == 0) {
          t->processor_id[0] = cpu_to_le32(smbios_cpuid_version);
@@ -1265,7 +1265,7 @@ index 1ac063c..9a3bbd9 100644
 +    t->location = 0x03; /* System Board/Motherboard */
      t->use = 0x03; /* System memory */
 -    t->error_correction = 0x06; /* Multi-bit ECC (for Microsoft, per SeaBIOS) */
-+    t->error_correction = 0x03; /* Multi-bit ECC (for Microsoft, per SeaBIOS) */
++    t->error_correction = 0x02; /* Multi-bit ECC (for Microsoft, per SeaBIOS) */
      size_kb = QEMU_ALIGN_UP(current_machine->ram_size, KiB) / KiB;
      if (size_kb < MAX_T16_STD_SZ) {
          t->maximum_capacity = cpu_to_le32(size_kb);
@@ -2147,7 +2147,7 @@ index 6d85149..b4a8d3e 100644
              CPUID_EXT3_LAHF_LM | CPUID_EXT3_SVM,
          .xlevel = 0x8000000A,
 -        .model_id = "QEMU Virtual CPU version " QEMU_HW_VERSION,
-+        .model_id = "AMD CPU version " QEMU_HW_VERSION,
++        .model_id = "AMD Ryzen 7 5700G with Radeon Graphics" QEMU_HW_VERSION,
      },
      {
          .name = "phenom",
@@ -2156,7 +2156,7 @@ index 6d85149..b4a8d3e 100644
              CPUID_EXT_SSE3,
          .xlevel = 0x80000004,
 -        .model_id = "QEMU Virtual CPU version " QEMU_HW_VERSION,
-+        .model_id = "AMD CPU version " QEMU_HW_VERSION,
++        .model_id = "AMD Ryzen 7 5700G with Radeon Graphics" QEMU_HW_VERSION,
      },
      {
          .name = "kvm32",
@@ -2174,7 +2174,7 @@ index 6d85149..b4a8d3e 100644
              CPUID_EXT2_MMXEXT | CPUID_EXT2_3DNOW | CPUID_EXT2_3DNOWEXT,
          .xlevel = 0x80000008,
 -        .model_id = "QEMU Virtual CPU version " QEMU_HW_VERSION,
-+        .model_id = "AMD CPU version " QEMU_HW_VERSION,
++        .model_id = "AMD Ryzen 7 5700G with Radeon Graphics" QEMU_HW_VERSION,
      },
      {
          .name = "n270",
@@ -2183,7 +2183,7 @@ index 6d85149..b4a8d3e 100644
      if (!env->cpuid_model[0]) {
          object_property_set_str(OBJECT(cpu), "model-id",
 -                                "QEMU TCG CPU version " QEMU_HW_VERSION,
-+                                "TCG CPU version " QEMU_HW_VERSION,
++                                "AMD Ryzen 7 5700G with Radeon Graphics" QEMU_HW_VERSION,
                                  &error_abort);
      }
  }
@@ -2192,7 +2192,7 @@ index 6d85149..b4a8d3e 100644
      /* Hyper-V vendor id */
      if (!cpu->hyperv_vendor) {
 -        object_property_set_str(OBJECT(cpu), "hv-vendor-id", "Microsoft Hv",
-+        object_property_set_str(OBJECT(cpu), "hv-vendor-id", "",
++        object_property_set_str(OBJECT(cpu), "hv-vendor-id", "AuthenticAMD",
                                  &error_abort);
      }
      len = strlen(cpu->hyperv_vendor);
