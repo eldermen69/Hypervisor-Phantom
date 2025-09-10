@@ -7,7 +7,7 @@ index 24cc64f..b209120 100644
    ## Null-terminated Unicode string of the firmware vendor name that is the default name filled into the EFI System Table.
    # @Prompt Firmware vendor.
 -  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"EDK II"|VOID*|0x00010050
-+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"American Megatrends"|VOID*|0x00010050
++  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"American Megatrends International, LLC."|VOID*|0x00010050
  
    ## Firmware revision that is the default revision filled into the EFI System Table.
    # @Prompt Firmware revision.
@@ -38,7 +38,7 @@ index 17e2cf6..1d5925d 100644
   *     Compiler Version 0x20150204 (538247684)
   */
 -DefinitionBlock ("DSDT.aml", "DSDT", 2, "BHYVE", "BVDSDT", 0x00000001)
-+DefinitionBlock ("DSDT.aml", "DSDT", 2, "ALASKA", "A M I ", 0x00000001)
++DefinitionBlock ("DSDT.aml", "DSDT", 2, "ALASKA", "A M I ", 0x01072009)
  {
      Name (_S5, Package (0x02)
      {
@@ -174,9 +174,9 @@ index ba21393..3957eac 100644
 -  "EFI Development Kit II / OVMF\0"     /* Vendor */ \
 -  "0.0.0\0"                             /* BiosVersion */ \
 -  "02/06/2015\0"                        /* BiosReleaseDate */
-+  "American Megatrends Inc.\0"     /* Vendor */ \
-+  "1.C0\0"                         /* BiosVersion */ \
-+  "02/06/2024\0"                   /* BiosReleaseDate */
++  "American Megatrends International, LLC.\0"     /* Vendor */ \
++  "F18g\0"                         /* BiosVersion */ \
++  "03/11/2025\0"                   /* BiosReleaseDate */
  //
  // Type definition and contents of the default Type 0 SMBIOS table.
  //
@@ -280,7 +280,8 @@ index 45954fc..08c4315 100644
  
    ## Unicode string of the shell supplier
 -  gEfiShellPkgTokenSpaceGuid.PcdShellSupplier|L"EDK II"|VOID*|0x00000010
-+  gEfiShellPkgTokenSpaceGuid.PcdShellSupplier|L"American Megatrends"|VOID*|0x00000010
++  gEfiShellPkgTokenSpaceGuid.PcdShellSupplier|L"American Megatrends International, LLC."|VOID*|0x00000010
  
    ## Do extended decode of USB for determining media type
    gEfiShellPkgTokenSpaceGuid.PcdUsbExtendedDecode|TRUE|BOOLEAN|0x00000011
+
