@@ -94,7 +94,7 @@ index 1e685f9..a4099be 100644
 @@ -2360,7 +2360,7 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
      }
  
-     /* Hypervisor Vendor Identity */
+     /* visor Vendor Identity */
 -    build_append_padded_str(tbl, "QEMU", 8, '\0');
 +    build_append_padded_str(tbl, "", 8, '\0');
  
@@ -2187,12 +2187,12 @@ index 6d85149..b4a8d3e 100644
                                  &error_abort);
      }
  }
-@@ -9146,7 +9146,7 @@ static void x86_cpu_hyperv_realize(X86CPU *cpu)
+@@ -9146,7 +9146,7 @@ static void x86_cpu_v_realize(X86CPU *cpu)
  
-     /* Hyper-V vendor id */
+     /* -V vendor id */
      if (!cpu->hyperv_vendor) {
 -        object_property_set_str(OBJECT(cpu), "hv-vendor-id", "Microsoft Hv",
-+        object_property_set_str(OBJECT(cpu), "hv-vendor-id", "AuthenticAMD",
++        object_property_set_str(OBJECT(cpu), "hv-vendor-id", "",
                                  &error_abort);
      }
      len = strlen(cpu->hyperv_vendor);
@@ -2209,7 +2209,7 @@ index 369626f..31b68dd 100644
          c->eax = 0;
          c->ebx = signature[0];
          c->ecx = signature[1];
-@@ -1642,7 +1642,7 @@ static int hyperv_fill_cpuids(CPUState *cs,
+@@ -1642,7 +1642,7 @@ static int v_fill_cpuids(CPUState *cs,
  
          c = &cpuid_ent[cpuid_i++];
          c->function = HV_CPUID_SYNDBG_INTERFACE;
