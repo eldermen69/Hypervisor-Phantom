@@ -296,31 +296,13 @@ spoof_drive_serial_number() {
 
 
 spoof_acpi_table_data() {
-
   ##################################################
   ##################################################
-
-  # Spoofs 'OEM ID' and 'OEM Table ID' for ACPI tables.
-
-  local oem_pairs=(
-    'DELL  ' 'Dell Inc' ' ASUS ' 'Notebook'
-    'MSI NB' 'MEGABOOK' 'LENOVO' 'TC-O5Z  '
-    'LENOVO' 'CB-01   ' 'SECCSD' 'LH43STAR'
-    'LGE   ' 'ICL     '
-  )
-
-  if [[ "$CPU_VENDOR" == "amd" ]]; then
-    oem_pairs+=('ALASKA' 'A M I ')
-  elif [[ "$CPU_VENDOR" == "intel" ]]; then
-    oem_pairs+=('INTEL ' 'U Rvp   ')
-  fi
-
-  local total_pairs=$(( ${#oem_pairs[@]} / 2 ))
-  local random_index=$(( RANDOM % total_pairs * 2 ))
-  local appname6=${oem_pairs[$random_index]}
-  local appname8=${oem_pairs[$random_index + 1]}
+  # Use baremetal ACPI identifiers (ALASKA/AMI BIOS)
+  local appname6="ALASKA"
+  local appname8="A M I   "  # 8 chars, space-padded to match your baremetal
+  
   local h_file="include/hw/acpi/aml-build.h"
-
   sed -i "$h_file" -e "s/^#define ACPI_BUILD_APPNAME6 \".*\"/#define ACPI_BUILD_APPNAME6 \"${appname6}\"/"
   sed -i "$h_file" -e "s/^#define ACPI_BUILD_APPNAME8 \".*\"/#define ACPI_BUILD_APPNAME8 \"${appname8}\"/"
 
