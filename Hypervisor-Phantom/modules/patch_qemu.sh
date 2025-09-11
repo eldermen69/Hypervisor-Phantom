@@ -304,7 +304,7 @@ spoof_acpi_table_data() {
   # Spoofs 'OEM ID' and 'OEM Table ID' for ACPI tables.
 
   local oem_pairs=(
-    'ALASKA  ' 'A M I ' 
+    'ALASKA' 'A M I ' 
   )
 
   if [[ "$CPU_VENDOR" == "amd" ]]; then
