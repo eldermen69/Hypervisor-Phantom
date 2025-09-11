@@ -295,14 +295,30 @@ spoof_drive_serial_number() {
 
 
 
+
 spoof_acpi_table_data() {
+
   ##################################################
   ##################################################
-  # Use baremetal ACPI identifiers (ALASKA/AMI BIOS)
-  local appname6="ALASKA"
-  local appname8="A M I   "  # 8 chars, space-padded to match your baremetal
-  
+
+  # Spoofs 'OEM ID' and 'OEM Table ID' for ACPI tables.
+
+  local oem_pairs=(
+    'ALASKA  ' 'A M I ' 
+  )
+
+  if [[ "$CPU_VENDOR" == "amd" ]]; then
+    oem_pairs+=('ALASKA' 'A M I ')
+  elif [[ "$CPU_VENDOR" == "intel" ]]; then
+    oem_pairs+=('INTEL ' 'U Rvp   ')
+  fi
+
+  local total_pairs=$(( ${#oem_pairs[@]} / 2 ))
+  local random_index=$(( RANDOM % total_pairs * 2 ))
+  local appname6=${oem_pairs[$random_index]}
+  local appname8=${oem_pairs[$random_index + 1]}
   local h_file="include/hw/acpi/aml-build.h"
+
   sed -i "$h_file" -e "s/^#define ACPI_BUILD_APPNAME6 \".*\"/#define ACPI_BUILD_APPNAME6 \"${appname6}\"/"
   sed -i "$h_file" -e "s/^#define ACPI_BUILD_APPNAME8 \".*\"/#define ACPI_BUILD_APPNAME8 \"${appname8}\"/"
 
@@ -317,7 +333,7 @@ spoof_acpi_table_data() {
 
   local c_file="hw/acpi/aml-build.c"
   local pm_type="1" # Desktop
-  local chassis_type=$(sudo dmidecode --string chassis-type)
+  local chassis_type=$(dmidecode --string chassis-type)
 
   if [[ "$chassis_type" = "Notebook" ]]; then
     pm_type="2" # Notebook/Laptop/Mobile
@@ -343,6 +359,7 @@ spoof_acpi_table_data() {
   ##################################################
 
 }
+
 
 
 
