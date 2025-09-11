@@ -7,7 +7,7 @@ index b2a4b81..dffe9f8 100644
      /* The creator field is optional, but may be useful for
       * debugging / diagnostics */
 -    creator = g_utf8_to_utf16("QEMU v" QEMU_VERSION, -1, NULL,
-+    creator = g_utf8_to_utf16("Microsoft v" QEMU_VERSION, -1, NULL,
++    creator = g_utf8_to_utf16("Microsoft Windows 10.0" QEMU_VERSION, -1, NULL,
                                &creator_items, NULL);
      signature = cpu_to_le64(VHDX_FILE_SIGNATURE);
      ret = blk_co_pwrite(blk, VHDX_FILE_ID_OFFSET, sizeof(signature), &signature,
@@ -20,7 +20,7 @@ index 814796d..a584383 100644
          memcpy(s->volume_label, label, label_length);
      } else {
 -        memcpy(s->volume_label, "QEMU VVFAT", 10);
-+        memcpy(s->volume_label, "Local Disk", 10);
++        memcpy(s->volume_label, "New Volume", 10);
      }
  
      if (floppy) {
@@ -539,7 +539,7 @@ index c033242..4ac1fe3 100644
  
 -    m->family = "pc_piix";
 -    m->desc = "Standard PC (i440FX + PIIX, 1996)";
-+    m->family = "pc_b550";
++    m->family = "B550";
 +    m->desc = "AMD Ryzen 7 5700G with Radeon Graphics";
      m->default_machine_opts = "firmware=bios-256k.bin";
 -    m->default_display = "std";
@@ -570,7 +570,7 @@ index b309b2b..572ded4 100644
  
 -    m->family = "pc_q35";
 -    m->desc = "Standard PC (Q35 + ICH9, 2009)";
-+    m->family = "pc_b550";
++    m->family = "B550";
 +    m->desc = "AMD Ryzen 7 5700G with Radeon Graphics";
      m->units_per_default_bus = 1;
      m->default_machine_opts = "firmware=bios-256k.bin";
