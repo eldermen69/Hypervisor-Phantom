@@ -94,7 +94,7 @@ index 1e685f9..a4099be 100644
 @@ -2360,7 +2360,7 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
      }
  
-     /* visor Vendor Identity */
+     /* Hypervisor Vendor Identity */
 -    build_append_padded_str(tbl, "QEMU", 8, '\0');
 +    build_append_padded_str(tbl, "", 8, '\0');
  
