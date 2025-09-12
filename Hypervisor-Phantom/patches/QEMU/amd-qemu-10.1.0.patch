@@ -1962,7 +1962,7 @@ index 6b7d3ac..599c70e 100644
  
  /* QEMU/Bochs VGA (0x1234) */
 -#define PCI_VENDOR_ID_QEMU               0x1234
-+#define PCI_VENDOR_ID_QEMU               0x1022 // "???" | AMD Vendor ID Replacement from 0x1234
++#define PCI_VENDOR_ID_QEMU               0x1002 // "???" | AMD Vendor ID Replacement from 0x1234
  #define PCI_DEVICE_ID_QEMU_VGA           0x1111
  #define PCI_DEVICE_ID_QEMU_IPMI          0x1112
  
@@ -1991,24 +1991,24 @@ index 6b7d3ac..599c70e 100644
 -#define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
 -#define PCI_DEVICE_ID_REDHAT_SERIAL      0x0002
 +#define PCI_VENDOR_ID_REDHAT             0x1022 // "Red Hat, Inc." | AMD Vendor ID Replacement from 0x1b36
-+#define PCI_DEVICE_ID_REDHAT_BRIDGE      0x1480 // "QEMU PCI-PCI bridge" | AMD Device ID Replacement from 0x0001 | hw/pci-bridge/pci_bridge_dev.c
-+#define PCI_DEVICE_ID_REDHAT_SERIAL      0x0002 // TODO: find device_id | AMD Device ID Replacement from 0x???? | hw/char/serial-pci.c
++#define PCI_DEVICE_ID_REDHAT_BRIDGE      0x1633 // "QEMU PCI-PCI bridge" | AMD Device ID Replacement from 0x0001 | hw/pci-bridge/pci_bridge_dev.c
++#define PCI_DEVICE_ID_REDHAT_SERIAL      0x1639 // TODO: find device_id | AMD Device ID Replacement from 0x???? | hw/char/serial-pci.c
  #define PCI_DEVICE_ID_REDHAT_SERIAL2     0x0003
  #define PCI_DEVICE_ID_REDHAT_SERIAL4     0x0004
  #define PCI_DEVICE_ID_REDHAT_TEST        0x0005
  #define PCI_DEVICE_ID_REDHAT_ROCKER      0x0006
  #define PCI_DEVICE_ID_REDHAT_SDHCI       0x0007
 -#define PCI_DEVICE_ID_REDHAT_PCIE_HOST   0x0008
-+#define PCI_DEVICE_ID_REDHAT_PCIE_HOST   0x1482 // "QEMU PCIe Host bridge" | AMD Device ID Replacement from 0x0008 | hw/pci-host/gpex.c
++#define PCI_DEVICE_ID_REDHAT_PCIE_HOST   0x1632 // "QEMU PCIe Host bridge" | AMD Device ID Replacement from 0x0008 | hw/pci-host/gpex.c
  #define PCI_DEVICE_ID_REDHAT_PXB         0x0009
  #define PCI_DEVICE_ID_REDHAT_BRIDGE_SEAT 0x000a
  #define PCI_DEVICE_ID_REDHAT_PXB_PCIE    0x000b
 -#define PCI_DEVICE_ID_REDHAT_PCIE_RP     0x000c
 -#define PCI_DEVICE_ID_REDHAT_XHCI        0x000d
 -#define PCI_DEVICE_ID_REDHAT_PCIE_BRIDGE 0x000e
-+#define PCI_DEVICE_ID_REDHAT_PCIE_RP     0x1483 // "QEMU PCIe Root Port" | AMD Device ID Replacement from 0x000c | hw/pci-bridge/gen_pcie_root_port.c
-+#define PCI_DEVICE_ID_REDHAT_XHCI        0x43d5 // "QEMU XHCI Host Controller" | AMD Device ID Replacement from 0x000d | hw/usb/hcd-xhci-pci.c
-+#define PCI_DEVICE_ID_REDHAT_PCIE_BRIDGE 0x1483 // "Red Hat, Device ID: 000E" | AMD Device ID Replacement from 0x000e | hw/pci-bridge/pcie_pci_bridge.c
++#define PCI_DEVICE_ID_REDHAT_PCIE_RP     0x1634 // "QEMU PCIe Root Port" | AMD Device ID Replacement from 0x000c | hw/pci-bridge/gen_pcie_root_port.c
++#define PCI_DEVICE_ID_REDHAT_XHCI        0x43ee // "QEMU XHCI Host Controller" | AMD Device ID Replacement from 0x000d | hw/usb/hcd-xhci-pci.c
++#define PCI_DEVICE_ID_REDHAT_PCIE_BRIDGE 0x43ea // "Red Hat, Device ID: 000E" | AMD Device ID Replacement from 0x000e | hw/pci-bridge/pcie_pci_bridge.c
  #define PCI_DEVICE_ID_REDHAT_MDPY        0x000f
  #define PCI_DEVICE_ID_REDHAT_NVME        0x0010
  #define PCI_DEVICE_ID_REDHAT_PVPANIC     0x0011
@@ -2031,8 +2031,8 @@ index 33e2898..0a4e198 100644
  #define PCI_DEVICE_ID_INTEL_82371SB_0    0x7000
 -#define PCI_DEVICE_ID_INTEL_82371SB_1    0x7010
 -#define PCI_DEVICE_ID_INTEL_82371SB_2    0x7020
-+#define PCI_DEVICE_ID_INTEL_82371SB_1    0x7010 // TODO: | Intel 82371SB_1 - ??? | AMD Vendor ID Replacement from 0x???? | hw/ide/piix.c
-+#define PCI_DEVICE_ID_INTEL_82371SB_2    0x7020 // TODO: | Intel 82371SB_2 - ??? | AMD Vendor ID Replacement from 0x???? | hw/usb/hcd-uhci.c
++#define PCI_DEVICE_ID_INTEL_82371SB_1    0x43eb // TODO: | Intel 82371SB_1 - ??? | AMD Vendor ID Replacement from 0x???? | hw/ide/piix.c
++#define PCI_DEVICE_ID_INTEL_82371SB_2    0x43ee // TODO: | Intel 82371SB_2 - ??? | AMD Vendor ID Replacement from 0x???? | hw/usb/hcd-uhci.c
  #define PCI_DEVICE_ID_INTEL_82371AB_0    0x7110
  #define PCI_DEVICE_ID_INTEL_82371AB      0x7111
  #define PCI_DEVICE_ID_INTEL_82371AB_2    0x7112
@@ -2053,7 +2053,7 @@ index 33e2898..0a4e198 100644
  #define PCI_DEVICE_ID_INTEL_82599_SFP_VF 0x10ed
  
 -#define PCI_DEVICE_ID_INTEL_P35_MCH      0x29c0
-+#define PCI_DEVICE_ID_INTEL_P35_MCH      0x1480 // Intel G33/P35/Q35/Q33 Chipset - Memory Controller Hub [A0] | AMD Vendor ID Replacement from 0x29c0 | hw/pci-host/q35.c
++#define PCI_DEVICE_ID_INTEL_P35_MCH      0x1630 // Intel G33/P35/Q35/Q33 Chipset - Memory Controller Hub [A0] | AMD Vendor ID Replacement from 0x29c0 | hw/pci-host/q35.c
  
  #define PCI_VENDOR_ID_XEN                0x5853
  #define PCI_DEVICE_ID_XEN_PLATFORM       0x0001
