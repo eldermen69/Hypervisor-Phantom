@@ -287,55 +287,55 @@ index 423c495..ffb0a06 100644
 +        aml_append(sb_scope, aml_name_decl("OSYS", aml_int(0x03E8)));
 +
 +        Aml *osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2016")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D1), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001 SP1")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2017")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D1), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001 SP2")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2017.2")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D2), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001.1")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2018")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D3), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2006")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2018.2")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D6), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2009")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2019")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D9), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2012")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2020")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07DC), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2013")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2021")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07DD), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2015")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2022")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07DF), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
@@ -356,55 +356,55 @@ index 423c495..ffb0a06 100644
 +        aml_append(sb_scope, aml_name_decl("OSYS", aml_int(0x03E8)));
 +
 +        Aml *osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2017")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D1), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001 SP1")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2017.2")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D1), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001 SP2")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2017")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D2), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2001.1")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2018")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D3), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2006")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2018.2")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D6), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2009")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2019")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07D9), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2012")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2020")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07DC), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2013")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2021")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07DD), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
 +
 +        osi = aml_if(
-+            aml_equal(aml_call1("_OSI", aml_string("Windows 2015")), aml_int(1))
++            aml_equal(aml_call1("_OSI", aml_string("Windows 2022")), aml_int(1))
 +        );
 +        aml_append(osi, aml_store(aml_int(0x07DF), aml_name("OSYS")));
 +        aml_append(sb_scope, osi);
