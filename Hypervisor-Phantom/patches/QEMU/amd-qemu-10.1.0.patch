@@ -1194,7 +1194,7 @@ index 1ac063c..9a3bbd9 100644
 -    t->processor_type = 0x03; /* CPU */
 -    t->processor_family = 0xfe; /* use Processor Family 2 field */
 +    t->processor_type = 0x03; /* Central Processor */
-+    t->processor_family = 0xCC; /* AMD Ryzen 5 processor */
++    t->processor_family = 0x8C; /* AMD Ryzen 5 processor */
      SMBIOS_TABLE_SET_STR(4, processor_manufacturer_str, type4.manufacturer);
      if (type4.processor_id == 0) {
          t->processor_id[0] = cpu_to_le32(smbios_cpuid_version);
@@ -1204,7 +1204,7 @@ index 1ac063c..9a3bbd9 100644
      SMBIOS_TABLE_SET_STR(4, processor_version_str, type4.version);
 -    t->voltage = 0;
 -    t->external_clock = cpu_to_le16(0); /* Unknown */
-+    t->voltage = 0x8B; // Bit 7 is set for modern cpus, the last bits indicate the current cpu voltage * 10.
++    t->voltage = 0x8E; // Bit 7 is set for modern cpus, the last bits indicate the current cpu voltage * 10.
 +    t->external_clock = cpu_to_le16(0x0064); /* Unknown */
      t->max_speed = cpu_to_le16(type4.max_speed);
      t->current_speed = cpu_to_le16(type4.current_speed);
@@ -1214,9 +1214,9 @@ index 1ac063c..9a3bbd9 100644
 -    t->l2_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
 -    t->l3_cache_handle = cpu_to_le16(0xFFFF); /* N/A */
 +    t->processor_upgrade = 0x31; /* 0x31 = AM4 Socket | 0x49 = AM5 Socket | https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.8.0.pdf#%5B%7B%22num%22%3A305%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C70%2C318%2C0%5D */
-+    t->l1_cache_handle = cpu_to_le16(0x0014); /* N/A */
-+    t->l2_cache_handle = cpu_to_le16(0x0015); /* N/A */
-+    t->l3_cache_handle = cpu_to_le16(0x0016); /* N/A */
++    t->l1_cache_handle = cpu_to_le16(0x000D); /* N/A */
++    t->l2_cache_handle = cpu_to_le16(0x000E); /* N/A */
++    t->l3_cache_handle = cpu_to_le16(0x000F); /* N/A */
      SMBIOS_TABLE_SET_STR(4, serial_number_str, type4.serial);
      SMBIOS_TABLE_SET_STR(4, asset_tag_number_str, type4.asset);
      SMBIOS_TABLE_SET_STR(4, part_number_str, type4.part);
